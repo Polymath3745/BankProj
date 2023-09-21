@@ -1,23 +1,22 @@
 # test_Account.py
 import pytest
 from src.Account import Account
-
+"""
+Test the deposit method of the Account class
+"""
 def test_deposit():
-    # set up
+    # Arrange: Set up the initial account state
     account = Account(1234, "John Doe", 100.0, "Checking")
 
-    # func call
+    # Act: Perform the deposit operation
     account.deposit(50.0)
 
-    # actual output
+    # Assert: Check the results
     actual_output = account.curr_balance
-
-    # expected output
     expected_output = 150.0
 
-    # check deposit amount
     assert actual_output == expected_output
 
-    # check ValueError
+    # Check the ValueError for negative deposit
     with pytest.raises(ValueError):
         account.deposit(-100.0)
