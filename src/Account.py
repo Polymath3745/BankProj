@@ -142,12 +142,12 @@ class Account:
         val (float): withdrawal amount
     """
     def withdraw(self, val):
-        if val >= 0:
+        if val > 0:
             self.curr_balance -= val
-        if self.curr_balance == 0:
-            print("Your account has zero dollars in it!")
-        elif self.curr_balance < 0:
-            print("Your account has a negative balance!")
+            if self.curr_balance == 0:
+                print("Your account has zero dollars in it!")
+            elif self.curr_balance < 0:
+                print("Your account has a negative balance!")
         else:
             raise ValueError("Invalid withdrawal value")
 
