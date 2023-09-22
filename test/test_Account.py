@@ -76,3 +76,34 @@ def test_withdraw():
     
     # Check the exception message
     assert str(excinfo.value) == "Invalid withdrawal value"
+
+"""
+check_balance test
+"""
+def test_check_balance():
+    # Arrange: Set up the initial account state
+    account = Account(1234, "John Doe", 100.0, "Checking")
+
+    # Act: perform check_balance operation
+    balance = account.check_balance()
+
+    # Assert: Check results of the check_balance operation
+    actual_output = account.curr_balance
+    expected_output = balance
+
+    assert actual_output == expected_output 
+
+"""
+display_info test
+"""
+def test_display_info():
+    # Arrange: Set up the initial account state
+    account = Account(1234, "John Doe", 100.0, "Checking")
+
+    # Act: Function call
+    with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+        account.display_info()
+        output = mock_stdout.getvalue()
+
+    # Assert: Check output
+    assert "Account number: 1234\n Account name: John Doe\n Balance: 100.0\n Type: Checking" in output
